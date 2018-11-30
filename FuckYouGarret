@@ -14,7 +14,7 @@ void sleep(unsigned milliseconds) {
 
 int main() {
 
-
+	srand(time(NULL));
 	while (true) {
 		
 		sleep(900);
