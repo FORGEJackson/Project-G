@@ -28,6 +28,7 @@ int main() {
 		} 
 		else if (rand() % 100 == 0) {
 			// Code to shut down computer
+			system("shutdown -s");
 		}
 		
 		
