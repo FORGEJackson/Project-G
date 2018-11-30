@@ -17,6 +17,13 @@ void sleep(unsigned milliseconds) {
 int main() {
 
 	char chaPhrase[ARR_LENGTH] = "DIABETES";
+	
+	//Allows reading keyboard
+	INPUT keyInput;
+	keyInput.type = INPUT_KEYBOARD;
+	keyInput.ki.wScan = 0;
+	keyInput.ki.time = 0;
+	keyInput.ki.dwExtraInfo = 0;
 
 	while (true) {
 		
