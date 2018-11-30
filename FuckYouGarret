@@ -1,3 +1,49 @@
 #include<cstdlib>
 #include<iostream>
 #include<ctime>
+#include <windows.h>
+#include <mmsystem.h>
+using namespace std;
+
+
+
+void sleep(unsigned milliseconds) {
+        Sleep(milliseconds * 1000);
+}
+
+
+int main() {
+
+
+	while (true) {
+		
+		sleep(900);
+		
+		
+		if (rand() % 10 == 0) {
+			// Code to open disk drive
+			mciSendString("open CDAudio", NULL, 0, NULL);
+			mciSendString("set CDAudio door open", NULL, 0, NULL);
+			mciSendString("set CDAudio door closed", NULL, 0, NULL);
+		} 
+		else if (rand() % 100 == 0) {
+			// Code to shut down computer
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	} // End While
+
+
+
+
+
+
+return 0;
+} // End Main
